@@ -1,4 +1,4 @@
-# MorAqui
+# MorAki
   Bem vindo ao nosso projeto! Onde visamos ajudar jovens universitários com o sonho de se formar sem passar aperto!
   
 ## Escopo do Sistema:
