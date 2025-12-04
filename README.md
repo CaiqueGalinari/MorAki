@@ -37,51 +37,58 @@
 - Como usuário, eu gostaria de alterar meus dados
 - Como usuário, eu gostaria de cadastrar um imóvel
 - Como usuário, eu gostaria de alterar os dados do imóvel
-- Como usuário, eu gostaria de saber como são meus futuros colegas
-- Como usuário, eu gostaria de saber como que é o imóvel
-- Como usuário, eu gostaria de saber o que as pessoas pensam de um imóvel que moraram
-- Como usuário, eu gostaria de falar o que penso sobre um imóvel que morei
-- Como usuário, eu gostaria de falar com quem está alugando um quarto
 - Como usuário, eu gostaria de encontrar imóveis que me atendam
-- Como usuário, eu gostaria de encontrar pessoas compatíveis para morar comigo
-- Como usuário, eu gostaria de guardar um imóvel que gostei muito para alugar depois
 - Como usuário, eu gostaria de saber onde ficam os imóveis
+- Como usuário, eu gostaria de saber como que é o imóvel
+- Como usuário, eu gostaria de saber como são meus futuros colegas
+- Como usuário, eu gostaria de encontrar pessoas compatíveis para morar comigo
+- Como usuário, eu gostaria de falar com quem está alugando um quarto
+- Como usuário, eu gostaria de falar o que penso sobre um imóvel que morei
+- Como usuário, eu gostaria de saber o que as pessoas pensam de um imóvel que moraram
+- Como usuário, eu gostaria de guardar um imóvel que gostei muito para alugar depois
 
 ### Sprint:
 #### História #1 — Como usuário, eu gostaria de me cadastrar
 Tarefas e responsáveis:
-- Criar tela de registro de usuário (nome, e-mail, senha, tipo de usuário) — Frontend: [Érick]
-- Implementar API de cadastro de usuários e salvar no SGBD — Backend: [Caíque]
-- Conectar tela de registro ao backend e testar o fluxo completo — Frontend + Backend [Ronald]
+- Criar tela de registro de usuário (nome, email, senha, tipo) — Frontend: [Érick]
+- Implementar API de cadastro e persistência no SGBD — Backend: [Caíque]
+- Validar dados no backend (email único, senha mínima) — Backend: [Letícia]
+- Conectar frontend ao backend e testar fluxo completo — Fullstack: [Ronald]
 
 ---
 
-#### História #2 — Como usuário, eu gostaria de cadastrar um imóvel
+#### História #2 — Como usuário, eu gostaria de alterar meus dados
 Tarefas e responsáveis:
-- Criar formulário para cadastro de imóvel (endereço, valor, vagas, descrição, fotos) — Frontend: [Érick]
-- Implementar rota no backend para receber, validar e salvar imóveis no SGBD — Backend: [Caíque]
-- Validar dados e conectar o frontend ao backend — Frontend + Backend [Ronald]
+- Criar tela de edição de perfil — Frontend: [Kaiky]
+- Implementar API de atualização de dados do usuário — Backend: [Letícia]
+- Criar query e procedure para atualizar dados com segurança — Backend: [Caíque]
+- Conectar tela ao backend e testar fluxo — Fullstack: [Ronald]
 
 ---
 
-#### História #3 — Como usuário, eu gostaria de encontrar imóveis que me atendam
+#### História #3 — Como usuário, eu gostaria de cadastrar um imóvel
 Tarefas e responsáveis:
-- Criar tela principal com lista de imóveis — Frontend: [Kaiky]
-- Implementar endpoint no backend para buscar imóveis no SGBD com filtros (cidade, preço, vagas) — Backend: [Letícia]
-- Conectar busca do frontend à API e exibir resultados — Frontend + Backend [Ronald]
+- Criar tela de cadastro de imóvel (endereço, descrição, fotos, preço etc.) — Frontend: [Érick]
+- Criar API de cadastro de imóvel — Backend: [Letícia]
+- Definir modelo e tabelas no SGBD para imóveis — Backend: [Caíque]
+- Integrar tudo e testar — Fullstack: [Ronald]
 
 ---
 
-#### História #4 — Como usuário, eu gostaria de saber como é o imóvel
+#### História #4 - Como usuário, eu gostaria de alterar os dados do imóvel
 Tarefas e responsáveis:
-- Criar página de detalhes do imóvel — Frontend: [Kaiky]
-- Implementar rota no backend que retorna os dados completos de um imóvel do SGBD — Backend: [Letícia]
-- Integrar lista → detalhes com link “ver mais” — Frontend + Backend [Ronald]
+- Criar tela de edição de imóvel — Frontend: [Kaiky]
+- Implementar API de atualização de imóvel — Backend: [Letícia]
+- Criar queries para atualização segura no SGBD — Backend: [Caíque]
+- Conectar tela ao backend e testar — Fullstack: [Ronald]
 
 ---
 
-#### História #5 — Como usuário, eu gostaria de falar com quem está alugando um quarto
+#### História #5 — Como usuário, eu gostaria de encontrar imóveis que me atendam
 Tarefas e responsáveis:
-- Criar botão “Entrar em contato” na página de detalhes — Frontend: [Érick]
-- Criar endpoint no backend para processar o contato (ou simular com redirecionamento de e-mail/whatsapp) — Backend: [Caíque]
-- Testar fluxo de contato — Frontend + Backend [Ronald]
+- Criar tela de filtro e lista de imóveis — Frontend: [Érick]
+- Implementar API de busca com filtros (preço, localização, tipo etc.) — Backend: [Letícia]
+- Criar consultas otimizadas no SGBD para suporte aos filtros — Backend: [Caíque]
+- Conectar filtros e lista ao backend e testar — Fullstack: [Ronald]
+
+---
