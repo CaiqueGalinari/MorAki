@@ -1,0 +1,24 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+
+# Arquivos compilados pelo Maven (Obrigatório ignorar)
+target/
+*.class
+*.war
+*.jar
+
+# Configurações do IntelliJ (Obrigatório ignorar)
+.idea/
+*.iml
+*.iws
+
+# Configurações do Smart Tomcat
+.smarttomcat/
+
+# Arquivos de sistema operacional (Lixo do Windows/Mac)
+Thumbs.db
+.DS_Store
+
+# Logs (Se houver)
+*.log
