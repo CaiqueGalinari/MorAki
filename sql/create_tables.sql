@@ -2,6 +2,7 @@ CREATE TABLE usuario
 (
 id_usuario SERIAL PRIMARY KEY,
 descricao TEXT,
+nome VARCHAR(200) NOT NULL,
 email VARCHAR(100) NOT NULL UNIQUE, 
 senha VARCHAR(20) NOT NULL,
 security_key CHAR(8) NOT NULL
