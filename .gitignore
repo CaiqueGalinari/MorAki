@@ -1,6 +1,7 @@
 # Default ignored files
 /shelf/
 /workspace.xml
+sql/testes/
 
 # Arquivos compilados pelo Maven (Obrigatório ignorar)
 target/
