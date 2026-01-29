@@ -93,3 +93,32 @@ Tarefas e responsáveis:
 - Conectar filtros e lista ao backend e testar — Fullstack: [Ronald]
 
 ---
+
+## Diagramas UML
+
+### Diagrama de casos de uso
+![alt text](<Diagramas UML/Diagrama de Casos de Uso.png>)
+
+### Diagrama de classes
+
+
+
+### Diagramas de Atividades
+#### História 01
+
+
+
+#### História 02
+
+
+
+#### História 03
+
+
+
+#### História 04
+
+
+
+#### História 05
+
