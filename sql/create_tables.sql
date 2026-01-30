@@ -37,7 +37,7 @@ id_quem_cadastrou INT NOT NULL,
 CHECK (tot_inquilino >= 0),
 CHECK (max_inquilino > 0),
 CHECK (tot_inquilino <= max_inquilino),
-CHECK (tipo IN ('Casa', 'Apartamento', 'Kitnet', 'Quarto', 'Republica')), -- Lista fechada
+CHECK (tipo IN ('Casa', 'Apartamento', 'Kitnet', 'Quarto', 'Republica', 'Outros')), -- Lista fechada
 
 FOREIGN KEY(id_quem_cadastrou) 
     REFERENCES usuario(id_usuario) 
