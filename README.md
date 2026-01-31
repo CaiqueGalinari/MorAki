@@ -101,6 +101,7 @@ Tarefas e responsáveis:
 
 ### Diagrama de classes
 ![alt text](<Diagramas UML/Diagrama de Classes (1).png>)
+![alt text](<Diagramas UML/Diagrama de Classes.pdf>)
 
 ### Diagramas de Atividades
 #### História 01
