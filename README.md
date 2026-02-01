@@ -121,3 +121,17 @@ Tarefas e responsáveis:
 
 #### História 05
 
+
+
+## Protótipos de Tela
+
+### Tela de Login
+![Tela de Login](Prototipos-de-Tela/login_usuario.png)
+
+### Tela de Cadastro de Usuário
+![Tela de Cadastro de Usuário](Prototipos-de-Tela/cadastro_usuario.png)
+
+### Tela de Cadastro de Imóveis
+![Tela de Cadastro de Imóveis](Prototipos-de-Tela/cadastro_imovel.png)
+
+
