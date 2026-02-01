@@ -105,7 +105,7 @@ Tarefas e responsáveis:
 ### Diagramas de Atividades
 #### História 01
 
-![alt text](<Diagramas UML/Diagrama de Atividade - Historia #1.png>)
+![alt text](<Diagramas UML/Diagrama de Atividade-Historia #1.png>)
 
 #### História 02
 
