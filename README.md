@@ -105,23 +105,20 @@ Tarefas e responsáveis:
 ### Diagramas de Atividades
 #### História 01
 
-![alt text](<Diagramas UML/Diagrama de Atividade-Historia #1.png>)
+![alt text](Diagramas%20UML/Diagrama%20de%20Atividade%20-%20Historia%20%231.png)
 
 #### História 02
 
-![alt text](<Diagramas UML/Diagrama de Atividade - Historia #2.png>)
-
+![alt text](Diagramas%20UML/Diagrama%20de%20Atividade%20-%20Historia%20%232.png)
 
 #### História 03
 
-![alt text](<Diagramas UML/Diagrama de Atividade - Historia #3.png>)
-
+![alt text](Diagramas%20UML/Diagrama%20de%20Atividade%20-%20Historia%20%233.png)
 
 #### História 04
 
-![alt text](<Diagramas UML/Diagrama de Atividade - Historia #4.png>)
-
+![alt text](Diagramas%20UML/Diagrama%20de%20Atividade%20-%20Historia%20%234.png)
 
 #### História 05
 
-![alt text](<Diagramas UML/Diagrama de Atividade - Historia #5.png>)
+![alt text](Diagramas%20UML/Diagrama%20de%20Atividade%20-%20Historia%20%235.png)
