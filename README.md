@@ -102,26 +102,28 @@ Tarefas e responsáveis:
 ### Diagrama de classes
 ![alt text](<Diagramas UML/Diagrama de Classes.png>)
 
+----
+
 ### Diagramas de Atividades
 #### História 01
 
-
+![alt text](Diagramas%20UML/Diagrama%20de%20Atividade%20-%20Historia%20%231.png)
 
 #### História 02
 
-
+![alt text](Diagramas%20UML/Diagrama%20de%20Atividade%20-%20Historia%20%232.png)
 
 #### História 03
 
-
+![alt text](Diagramas%20UML/Diagrama%20de%20Atividade%20-%20Historia%20%233.png)
 
 #### História 04
 
-
+![alt text](Diagramas%20UML/Diagrama%20de%20Atividade%20-%20Historia%20%234.png)
 
 #### História 05
 
-
+---
 
 ## Protótipos de Tela
 
