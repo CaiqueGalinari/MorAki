@@ -87,7 +87,7 @@ Tarefas e responsáveis:
 
 #### História #5 — Como usuário, eu gostaria de encontrar imóveis que me atendam
 Tarefas e responsáveis:
-- Criar tela de filtro e lista de imóveis — Frontend: [Érick]
+- Criar tela de filtro e lista de imóveis — Frontend: [Kaiky]
 - Implementar API de busca com filtros (preço, localização, tipo etc.) — Backend: [Letícia]
 - Criar consultas otimizadas no SGBD para suporte aos filtros — Backend: [Caíque]
 - Conectar filtros e lista ao backend e testar — Fullstack: [Ronald]
@@ -136,5 +136,19 @@ Tarefas e responsáveis:
 
 ### Tela de Cadastro de Imóveis
 ![Tela de Cadastro de Imóveis](Prototipos-de-Tela/cadastro_imovel.png)
+
+### Tela de Editar Cadastro de Usuários
+![alterar_cadastro](https://github.com/user-attachments/assets/99cf0e03-8766-46d4-8bcb-370732ccb436)
+
+### Tela de Editar Cadastro de Imóveis
+![alterar_imovel](https://github.com/user-attachments/assets/2214afc9-4d6a-43a5-8302-818c7ecc7d1f)
+
+### Tela de Busca de Imóvel Ideal
+![Tela de Busca de Imóvel Ideal](https://github.com/user-attachments/assets/50502079-a6e9-47ae-b855-600b53d35271)
+
+
+
+
+
 
 
