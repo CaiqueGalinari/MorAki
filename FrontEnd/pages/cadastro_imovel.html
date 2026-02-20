@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Novo Imóvel | MorAki</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+    <main>
+        <section class="modal-largo"> 
+            
+            <h2 style="margin-bottom: 5px;">Cadastre seu Imóvel</h2>
+            <p style="margin-bottom: 30px; color: #666;">Adicione as informações da sua república</p>
+
+            <form>
+                <div class="conteudo-duas-colunas">
+                    
+                    <div class="coluna-form">
+                        
+                        <div class="linha-inputs">
+                            <div class="campo">
+                                <label>Tipo*</label>
+                                <select id="tipo" required>
+                                    <option value="" disabled selected>Selecione...</option>
+                                    <option value="Apartamento">Apartamento</option>
+                                    <option value="Casa">Casa</option>
+                                    <option value="Kitnet">Kitnet</option>
+                                    <option value="Quarto">Quarto</option>
+                                    <option value="República">República</option>
+                                </select>
+                            </div>
+                            <div class="campo">
+                                <label>Tempo (meses)</label>
+                                <input type="number" id="tempo">
+                            </div>
+                            <div class="campo">
+                                <label>Valor*</label>
+                                <input type="number" id="valor" required>
+                            </div>
+                        </div>
+
+                        <div class="linha-inputs">
+                            <div class="campo-grande">
+                                <label>Rua</label>
+                                <input type="text" id="rua">
+                            </div>
+                            <div class="campo-pequeno">
+                                <label>Nº</label>
+                                <input type="text" id="numero">
+                            </div>
+                            <div class="campo">
+                                <label>CEP*</label>
+                                <input type="text" id="cep" required>
+                            </div>
+                        </div>
+
+                        <div class="linha-inputs">
+                            <div class="campo">
+                                <label>Bairro</label>
+                                <input type="text" id="bairro">
+                            </div>
+                            <div class="campo">
+                                <label>Cidade</label>
+                                <input type="text" id="cidade">
+                            </div>
+                            <div class="campo-pequeno">
+                                <label>UF</label>
+                                <input type="text" id="uf">
+                            </div>
+                        </div>
+
+                        <div class="linha-inputs">
+                            <div class="campo">
+                                <label>Dono</label>
+                                <input type="text" id="dono">
+                            </div>
+                            <div class="campo">
+                                <label>Telefone</label>
+                                <input type="tel" id="telefone">
+                            </div>
+                            <div class="campo">
+                                <label>Max. Inquilinos*</label>
+                                <input type="number" id="inquilinos" required>
+                            </div>
+                        </div>
+
+                        <div class="campo">
+                            <label>Descrição</label>
+                            <textarea id="descricao" rows="4" style="width: 100%; background: #f0f0f0; border: none; border-radius: 5px; padding: 10px;"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="coluna-foto">
+                        <div class="box-foto">
+                            <p>Clique aqui para carregar<br>fotos do seu imóvel</p>
+                            <input type="file" id="foto" accept="image/*">
+                        </div>
+                    </div>
+
+                </div> <div class="botoes-rodape">
+                    <a href="listagem.html" class="btn-cancelar">Cancelar</a>
+                    <button type="submit" class="btn-cadastrar">Cadastrar</button>
+                </div>
+
+            </form>
+        </section>
+    </main>
+
+    <script src="../js/cadastro_imovel.js"></script>
+</body>
+</html>
