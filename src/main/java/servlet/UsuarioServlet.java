@@ -7,6 +7,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 @WebServlet("/usuarios")
 public class UsuarioServlet extends HttpServlet {
@@ -36,11 +37,15 @@ public class UsuarioServlet extends HttpServlet {
 
         try {
             dao.cadastrar(u);
-            resp.setContentType("text/html");
-            resp.getWriter().write("<h1>Sucesso!</h1><p>Usuário " + nome + " cadastrado no banco!</p>");
+            //("texresp.setContentTypet/html");
+            //resp.getWriter().write("<h1>Sucesso!</h1><p>Usuário " + nome + " cadastrado no banco!</p>");
+            resp.setContentType("application/json");
+            resp.getWriter().write("{\"status\":\"ok\",\"mensagem\":\"Usuário cadastrado com sucesso\"}");
         } catch (Exception e) {
-            resp.setContentType("text/html");
-            resp.getWriter().write("<h1>Erro!</h1><p>" + e.getMessage() + "</p>");
+            //resp.setContentType("text/html");
+            //resp.getWriter().write("<h1>Erro!</h1><p>" + e.getMessage() + "</p>");
+            resp.setContentType("application/json");
+            resp.getWriter().write("{\"status\":\"erro\",\"mensagem\":\"" + e.getMessage() + "\"}");
         }
     }
 }

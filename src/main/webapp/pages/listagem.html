@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imóveis | MorAki</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+    <header class = "navbar">
+        <div class="logo-nav">
+            <img src = "../assets/logo.png" alt="Logo MorAki">
+            <span>MorAki</span>
+        </div>
+
+        <div class="user-nav">
+            <span id="mensagem-ola">Olá, Usuario</span>
+            <button id="btn-sair" class = "btn-logout">Sair</button>
+        </div>
+    </header>
+
+    <main class = "dashboard">
+        <div class="titulo-secao">
+            <h2>Imóveis Disponíveis</h2>
+            
+            <div class="botoes-acao" style="display: flex; gap: 10px;">
+                <a href="meus_imoveis.html" class="btn-add btn-azul">Meus Imóveis</a>
+                
+                <a href="cadastro_imovel.html" class="btn-add">+ Novo Imóvel</a>
+            </div>
+        </div>
+
+        <div id="lista-imoveis" class="grid-imoveis">
+            <p class="aviso-vazio">Nenhum imóvel cadastrado ainda.</p>
+        </div>
+    </main>
+
+    <script src = "../js/listagem.js"></script>
+
+</body>
+</html>
