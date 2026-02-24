@@ -18,7 +18,7 @@
 
 ## Integrantes e papel:
 - Caíque Galinari  -  BackEnd
-- Erick Yuri   -  FrontEnd
+- Érick Yuri   -  FrontEnd
 - Kaiky Linhares  -  FrontEnd
 - Letícia Ferreira  -  BackEnd
 - Ronald Chaves  -  FullStack
@@ -37,6 +37,7 @@
 - Como usuário, eu gostaria de me cadastrar
 - Como usuário, eu gostaria de alterar meus dados
 - Como usuário, eu gostaria de cadastrar um imóvel
+- Como usuário, eu gostaria de ver meus imóveis cadastrados
 - Como usuário, eu gostaria de alterar os dados do imóvel
 - Como usuário, eu gostaria de encontrar imóveis que me atendam
 - Como usuário, eu gostaria de saber onde ficam os imóveis
@@ -78,6 +79,7 @@ Tarefas e responsáveis:
 
 #### História #4 - Como usuário, eu gostaria de alterar os dados do imóvel
 Tarefas e responsáveis:
+- Criar tela de exibição de imóveis cadastrados pelo usuário — Frontend: [Érick]
 - Criar tela de edição de imóvel — Frontend: [Kaiky]
 - Implementar API de atualização de imóvel — Backend: [Letícia]
 - Criar queries para atualização segura no SGBD — Backend: [Caíque]
@@ -146,7 +148,8 @@ Tarefas e responsáveis:
 ### Tela de Busca de Imóvel Ideal
 ![Tela de Busca de Imóvel Ideal](https://github.com/user-attachments/assets/50502079-a6e9-47ae-b855-600b53d35271)
 
-
+### Tela de Meus Imóveis (Protótipo criado após 2ª Entrega)
+![Tela de Exibição dos Imóveis Cadastrados](Prototipos-de-Tela/meus_imoveis.png)
 
 
 
