@@ -29,8 +29,12 @@
 
 ### BackEnd:
 - **Linguagem:** Java
+  - **Estrutura:** Maven (sem o padrão para Banco de Dados, uma vez que usamos postgre)
 - **SGBD:** PostgreSQL
 - **Servlet:** Tomcat
+
+### Geral:
+- **Auxílio no aprendizado e depuração:** Gemini e Copilot
 
 ## Backlogs:
 ### Produto:
