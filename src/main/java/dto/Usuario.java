@@ -1,7 +1,7 @@
 package dto;
 
 public class Usuario {
-    //Colunas da tabela
+
     private String nome;
     private int idUsuario;
     private String descricao;
@@ -9,10 +9,8 @@ public class Usuario {
     private String senha;
     private String securityKey;
 
-    // Construtor vazio
     public Usuario() {}
 
-    // Getters e Setters
     public String getNome(){ return nome; }
     public void setNome(String nome) { this.nome = nome; }
 

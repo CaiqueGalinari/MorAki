@@ -1,7 +1,6 @@
 package dto;
 
 public class Moradia {
-    // Colunas
     private int idMoradia;
     private String endereco;
     private int totInquilino;
@@ -12,11 +11,10 @@ public class Moradia {
     private int tempoAluguel;
     private double valor;
     private String descricao;
-    private int idQuemCadastrou; // O ID do usuário logado vem aqui
+    private int idQuemCadastrou;
 
     public Moradia() {}
 
-    // Getters e Setters
     public int getIdMoradia() { return idMoradia; }
     public void setIdMoradia(int idMoradia) { this.idMoradia = idMoradia; }
 

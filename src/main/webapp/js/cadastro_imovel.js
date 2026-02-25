@@ -3,56 +3,59 @@ const formulario = document.querySelector('form');
 formulario.addEventListener('submit', function(evento) {
     evento.preventDefault();
 
-    // 1. Capturar todos os valores digitados
-    const tipo = document.getElementById('tipo').value;
-    const tempo = parseInt(document.getElementById('tempo').value) || 0;
-    const valor = parseFloat(document.getElementById('valor').value) || 0;
-    const rua = document.getElementById('rua').value;
-    const numero = document.getElementById('numero').value;
-    const cidade = document.getElementById('cidade').value;
-    const uf = document.getElementById('uf').value;
-    const inquilinos = parseInt(document.getElementById('inquilinos').value) || 1;
-    
-    const enderecoCompleto = `${rua}, ${numero} - ${cidade}`;
-    const tituloAutomatico = `${tipo} em ${cidade}`;
+    const tipo = document.querySelector('#tipo').value;
+    const tempoAluguel = document.querySelector('#tempo').value;
+    const valor = document.querySelector('#valor').value;
 
-    // 2. Lógica para ler a FOTO
-    const inputFoto = document.getElementById('foto');
-    const arquivo = inputFoto.files[0]; // Pega o arquivo que o usuário escolheu
+    const rua = document.querySelector('#rua').value;
+    const numero = document.querySelector('#numero').value;
+    const cep = document.querySelector('#cep').value;
+    const bairro = document.querySelector('#bairro').value;
+    const cidade = document.querySelector('#cidade').value;
+    const uf = document.querySelector('#uf').value;
 
-    // Se o usuário escolheu uma foto, o FileReader transforma ela em texto (Base64)
-    if (arquivo) {
-        const leitor = new FileReader();
-        leitor.onload = function(e) {
-            const imagemBase64 = e.target.result;
-            salvarNoLocalStorage(imagemBase64); // Chama a função passando a foto real
-        };
-        leitor.readAsDataURL(arquivo);
-    } else {
-        // Se não escolheu foto, passa vazio ("")
-        salvarNoLocalStorage(""); 
+    const enderecoCompleto = `, ${numero}, ${rua}, ${bairro}, ${cidade}, ${uf}, ${cep}`;
+
+    const nomeDono = document.querySelector('#dono').value;
+    const telefoneDono = document.querySelector('#telefone').value;
+    const maxInquilino = document.querySelector('#inquilinos').value;
+    const descricao = document.querySelector('#descricao').value;
+
+    const usuarioLogadoString = localStorage.getItem('usuarioLogado');
+    let idQuemCadastrou = 1;
+    if (usuarioLogadoString) {
+        const usuario = JSON.parse(usuarioLogadoString);
+        idQuemCadastrou = usuario.id;
     }
 
-    // 3. Função que salva os dados depois que a foto for processada
-    function salvarNoLocalStorage(fotoConvertida) {
-        const novoImovel = {
-            id: Date.now(),
-            titulo: tituloAutomatico,
-            preco: valor,
-            tempo: tempo,
-            inquilinos: inquilinos,
-            endereco: enderecoCompleto,
-            tipo: tipo,
-            cidade: cidade,
-            estado: uf,
-            imagem: fotoConvertida // Aqui entra a foto real ou o vazio!
-        };
+    const dados = new URLSearchParams();
+    dados.append("tipo", tipo);
+    dados.append("tempoAluguel", tempoAluguel);
+    dados.append("valor", valor);
+    dados.append("endereco", enderecoCompleto);
+    dados.append("nomeDono", nomeDono);
+    dados.append("telefoneDono", telefoneDono);
+    dados.append("maxInquilino", maxInquilino);
+    dados.append("descricao", descricao);
+    dados.append("totInquilino", 0);
+    dados.append("idQuemCadastrou", idQuemCadastrou);
 
-        let listaSalva = JSON.parse(localStorage.getItem('meusImoveis')) || [];
-        listaSalva.push(novoImovel);
-        localStorage.setItem('meusImoveis', JSON.stringify(listaSalva));
-
-        alert("Imóvel cadastrado com sucesso!");
-        window.location.href = "meus_imoveis.html";
-    }
+    fetch("http://localhost:8080/moraki/moradias", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: dados.toString()
+    })
+    .then(response => response.json())
+    .then(data => {
+        if(data.status === "ok") {
+            alert("Imóvel cadastrado com sucesso!");
+            window.location.href = "meus_imoveis.html";
+        } else {
+            alert("Erro: " + data.mensagem);
+        }
+    })
+    .catch(error => {
+        console.error("Erro no cadastro:", error);
+        alert("Erro ao conectar com o servidor.");
+    });
 });

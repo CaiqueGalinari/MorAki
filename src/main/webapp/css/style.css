@@ -1,15 +1,12 @@
-/* 1. RESET GERAL */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    /* Define a fonte padrão para todo o projeto (tira a Times New Roman) */
     font-family: 'Segoe UI', sans-serif;
 }
 
-/* 2. O FUNDO DA TELA */
 body {
-    min-height: 100vh; /* Permite que a tela cresça se precisar de rolagem */
+    min-height: 100vh;
     display: flex;
     justify-content: center; 
     align-items: center;     
@@ -18,23 +15,20 @@ body {
     background: linear-gradient(to bottom, #a63a58, #1a050d);
     background-image: url("../assets/wpp_predios.png");
     background-repeat: no-repeat;
-    background-size: cover; /* Garante que o fundo cubra tudo sem distorcer */
+    background-size: cover;
     background-position: center;
 }
 
-
-/* 3. O CARTÃO BRANCO (LOGIN) */
 section {
     background-color: white;
-    width: 90%; /* Deixa flexível */
-    max-width: 400px; /* Trava no tamanho ideal para o Login */
+    width: 90%;
+    max-width: 400px;
     padding: 40px;
     border-radius: 10px;
     text-align: center;
     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
 }
 
-/* Estilo da Logo e Textos do Topo */
 .header-main img {
     width: 60px;
     margin-bottom: 10px;
@@ -56,16 +50,15 @@ section {
 h2 {
     margin-bottom: 20px;
     font-size: 1.2rem;
-    text-transform: uppercase; /* Deixa tudo maiúsculo (LOGIN) */
+    text-transform: uppercase;
     letter-spacing: 1px;
 }
 
-/* 4. O FORMULÁRIO */
 form {
     display: flex;
-    flex-direction: column; /* Obriga um item a ficar embaixo do outro */
-    text-align: left;       /* Alinha labels à esquerda */
-    gap: 15px;              /* Espaço entre os campos */
+    flex-direction: column;
+    text-align: left;
+    gap: 15px;
 }
 
 .form-body{
@@ -78,18 +71,16 @@ form {
     gap: 1rem;
 }
 
-/* Labels (Textos "E-mail" e "Senha") */
 label {
     width: 100%;
     margin-right: auto;;
     font-weight: bold;
     font-size: 0.9rem;
-    margin-bottom: -10px; /* Aproxima o label do input */
-    z-index: 1; /* Garante que fique "em cima" visualmente se precisar */
+    margin-bottom: -10px;
+    z-index: 1;
     text-align: left;
 }
 
-/* Inputs e Selects (As caixas de digitar e escolher) */
 input, select {
     width: 100%;
     padding: 10px; 
@@ -97,28 +88,25 @@ input, select {
     border: none;
     background-color: #f0f0f0;
     font-size: 1rem;
-    font-family: 'Segoe UI', sans-serif; /* Garante a fonte certa no select */
+    font-family: 'Segoe UI', sans-serif;
 }
 
-/* Destaque ao clicar no input/select */
 input:focus, select:focus {
     outline: 2px solid #a63a58;
     background-color: #fff;
 }
 
-/* 5. ÁREA DOS BOTÕES */
 .botoes {
     display: flex;
-    justify-content: space-evenly; /* Botão na esquerda, Link na direita */
+    justify-content: space-evenly;
     align-items: center;
     margin-top: 30px;
     flex-direction: column;
     gap: 1rem;
 }
 
-/* O Botão "Entrar" */
 button {
-    background-color: #b03d5b; /* Cor vinho/vermelha */
+    background-color: #b03d5b;
     color: white;
     border: none;
     padding: 10px 40px;
@@ -126,16 +114,15 @@ button {
     font-size: 1rem;
     cursor: pointer;
     font-weight: bold;
-    transition: background 0.3s; /* Efeito suave ao passar o mouse */
+    transition: background 0.3s;
 }
 
 button:hover {
-    background-color: #8a2b45; /* Escurece um pouco ao passar o mouse */
+    background-color: #8a2b45;
 }
 
-/* Botão "Cadastre-se" */
 .botoes a {
-    text-decoration: none; /* Tira o sublinhado */
+    text-decoration: none;
     color: #333;
     font-weight: bold;
     font-size: 0.9rem;
@@ -145,24 +132,18 @@ button:hover {
     color: #b03d5b;
 }
 
-
-
-/* --- ESTILOS DA TELA DE LISTAGEM (DASHBOARD) --- */
-
-/* Ajuste no Body para permitir rolagem na listagem */
 body:has(.navbar) {
-    display: block; /* Remove o display flex centralizado do login */
-    background: #f4f4f4; /* Fundo cinza claro para a área interna */
+    display: block;
+    background: #f4f4f4;
     height: auto;
 }
 
-/* 1. Navbar (Barra roxa no topo) */
 .navbar {
     background: linear-gradient(to right, #a63a58, #5a1228);
     color: white;
     padding: 15px 40px;
     display: flex;
-    justify-content: space-between; /* Logo na esq, User na dir */
+    justify-content: space-between;
     align-items: center;
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
@@ -176,11 +157,10 @@ body:has(.navbar) {
 }
 
 .logo-nav img {
-    height: 40px; /* Logo menorzinha na barra */
+    height: 40px;
     width: auto;
 }
 
-/* 2. Botão de Sair */
 .btn-logout {
     background-color: transparent;
     border: 1px solid rgba(255,255,255,0.5);
@@ -193,10 +173,9 @@ body:has(.navbar) {
     background-color: rgba(255,255,255,0.2);
 }
 
-/* 3. Área Principal */
 .dashboard {
     max-width: 1000px;
-    margin: 40px auto; /* Centraliza o bloco na tela */
+    margin: 40px auto;
     padding: 0 20px;
 }
 
@@ -213,9 +192,8 @@ body:has(.navbar) {
     color: #333;
 }
 
-/* Botão de Adicionar Imóvel */
 .btn-add {
-    background-color: #28a745; /* Verde */
+    background-color: #28a745;
     color: white;
     padding: 10px 20px;
     text-decoration: none;
@@ -228,16 +206,14 @@ body:has(.navbar) {
     background-color: #218838;
 }
 
-/* Modificador para o botão azul */
 .btn-azul {
-    background-color: #007bff; /* Azul padrão */
+    background-color: #007bff;
 }
 
 .btn-azul:hover {
-    background-color: #0056b3; /* Azul mais escuro ao passar o mouse */
+    background-color: #0056b3;
 }
 
-/* Grade de Imóveis (Vazio por enquanto) */
 .aviso-vazio {
     color: #777;
     font-style: italic;
@@ -245,11 +221,6 @@ body:has(.navbar) {
     margin-top: 50px;
 }
 
-
-
-/* --- ESTILOS DO CADASTRO DE IMÓVEL --- */
-
-/* 1. Aumentar a largura do modal */
 .modal-largo {
     background-color: white;
     width: 95%;
@@ -260,7 +231,6 @@ body:has(.navbar) {
     box-shadow: 0px 10px 25px rgba(0,0,0,0.5); 
 }
 
-/* 2. Dividir em duas colunas (Esquerda e Direita) */
 .conteudo-duas-colunas {
     display: flex;
     gap: 30px; 
@@ -268,7 +238,6 @@ body:has(.navbar) {
     margin-bottom: 20px;
 }
 
-/* No celular, vira uma coluna só */
 @media (max-width: 768px) {
     .conteudo-duas-colunas {
         flex-direction: column;
@@ -276,30 +245,27 @@ body:has(.navbar) {
 }
 
 .coluna-form {
-    flex: 2; /* O formulário ocupa 2 partes do espaço */
+    flex: 2;
 }
 
 .coluna-foto {
-    flex: 1; /* A foto ocupa 1 parte */
+    flex: 1;
 }
 
-/* 3. Organizar os inputs em linhas */
 .linha-inputs {
     display: flex;
     gap: 15px;
     margin-bottom: 15px;
 }
 
-/* Classes utilitárias para tamanhos de campos */
-.campo { flex: 1; } /* Cresce igual */
-.campo-grande { flex: 2; } /* Dobro do tamanho */
-.campo-pequeno { width: 60px; } /* Tamanho fixo */
+.campo { flex: 1; }
+.campo-grande { flex: 2; }
+.campo-pequeno { width: 60px; }
 
-/* 4. A Caixa de Foto Cinza */
 .box-foto {
     background-color: #f0f0f0;
     height: 100%;
-    min-height: 250px; /* Altura mínima garantida */
+    min-height: 250px;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -310,10 +276,9 @@ body:has(.navbar) {
     font-weight: bold;
     cursor: pointer;
     position: relative;
-    border: 2px dashed #ccc; /* Borda tracejada charmosa */
+    border: 2px dashed #ccc;
 }
 
-/* O input file fica invisível por cima de tudo */
 .box-foto input[type="file"] {
     position: absolute;
     width: 100%;
@@ -322,10 +287,9 @@ body:has(.navbar) {
     cursor: pointer;
 }
 
-/* 5. Botões do Rodapé */
 .botoes-rodape {
     display: flex;
-    justify-content: flex-end; /* Alinha à direita */
+    justify-content: flex-end;
     gap: 15px;
     margin-top: 20px;
 }
@@ -340,21 +304,17 @@ body:has(.navbar) {
 }
 
 .btn-cadastrar {
-    /* Reutiliza estilo do botão padrão, mas pode forçar se precisar */
-    width: auto; /* Não ocupa 100% igual no login */
+
+    width: auto;
 }
 
-
-
-
-/* --- TELA MEUS IMÓVEIS --- */
 .modal-imoveis {
     display: flex;
     flex-direction: column;
     gap: 20px;
     
-    width: 900px !important; /* Tenta sempre ficar grande no PC */
-    max-width: 95% !important; /*respeita a tela do celular se precisar */
+    width: 900px !important;
+    max-width: 95% !important;
 }
 
 .header-imoveis {
@@ -369,7 +329,7 @@ body:has(.navbar) {
     left: -20px;
     top: -20px;
     font-size: 2rem;
-    color: white; /* Para ficar fora do card branco, no fundo roxo */
+    color: white;
     text-decoration: none;
 }
 
@@ -392,7 +352,6 @@ body:has(.navbar) {
     cursor: pointer;
 }
 
-/* O Card do Imóvel */
 .lista-cards {
     display: flex;
     flex-direction: column;
@@ -407,8 +366,8 @@ body:has(.navbar) {
     gap: 15px;
     align-items: flex-start;
     
-    width: 100%; /* Força o card a esticar junto com o fundo branco */
-    box-sizing: border-box; /* Garante que o padding não estoure a borda */
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .card-img {
@@ -418,7 +377,6 @@ body:has(.navbar) {
     border-radius: 8px;
 }
 
-/* Caixinha para quando o imóvel não tiver foto */
 .sem-foto {
     width: 150px;
     height: 100px;
@@ -430,7 +388,7 @@ body:has(.navbar) {
     border-radius: 8px;
     font-size: 0.9rem;
     text-align: center;
-    flex-shrink: 0; /* Impede a caixinha de ser esmagada */
+    flex-shrink: 0;
     border: 1px dashed #ccc;
 }
 
@@ -452,7 +410,7 @@ body:has(.navbar) {
 
 .card-detalhes-linha {
     display: flex;
-    gap: 15px; /* Espaço menor para garantir que caiba tudo */
+    gap: 15px;
     align-items: center;
 }
 
@@ -478,10 +436,9 @@ body:has(.navbar) {
     display: flex;
     align-items: center;
     gap: 5px;
-    margin-top: 2px; /* Espacinho de leve em relação à linha de cima */
+    margin-top: 2px;
 }
 
-/* Botões de Ação do Card */
 .card-acoes {
     display: flex;
     gap: 8px; 
@@ -494,16 +451,14 @@ body:has(.navbar) {
 .btn-acao {
     background: none;
     border: none;
-    font-size: 1.5rem; /* Ícone um pouquinho menor */
-    
-    /* AQUI CONTROLA O TAMANHO DO QUADRADO DO HOVER */
+    font-size: 1.5rem;
+
     padding: 6px; 
-    border-radius: 6px; /* Cantos arredondados no quadrado do hover */
+    border-radius: 6px;
     
     cursor: pointer;
-    transition: all 0.2s; /* Transição suave para cor e tamanho */
-    
-    /* Centraliza o ícone perfeitamente dentro do quadrado */
+    transition: all 0.2s;
+
     display: flex;
     align-items: center;
     justify-content: center;
@@ -517,7 +472,6 @@ body:has(.navbar) {
 .btn-acao.deletar { color: #e60000; }
 .btn-acao.editar { color: #333; }
 
-/* Rodapé e Paginação */
 .rodape-imoveis {
     display: flex;
     justify-content: space-between;
@@ -529,7 +483,7 @@ body:has(.navbar) {
     display: flex;
     align-items: center;
     gap: 15px;
-    margin: 0 auto; /* Centraliza a paginação */
+    margin: 0 auto;
 }
 
 .btn-pag {
@@ -544,7 +498,6 @@ body:has(.navbar) {
     gap: 5px;
 }
 
-/* Botão de paginação desativado (quando não há mais páginas) */
 .btn-pag:disabled {
     background-color: #ccc;
     color: #888;

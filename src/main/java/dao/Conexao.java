@@ -8,7 +8,6 @@ public class Conexao {
 
     public static Connection getConexao() {
         try {
-            // Tenta conectar no banco
             Class.forName("org.postgresql.Driver");
             return DriverManager.getConnection(
                     "jdbc:postgresql://localhost:5432/db_moraki", // URL

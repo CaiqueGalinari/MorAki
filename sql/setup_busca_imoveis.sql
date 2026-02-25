@@ -1,30 +1,28 @@
--- 1. OTIMIZAÇÃO (Rodar uma vez no banco)
--- Cria índices para acelerar as buscas mais comuns
-
--- Acelera busca por Tipo (ex: quem só quer "Apartamento")
+-- Tipo
 CREATE INDEX idx_moradia_tipo ON moradia(tipo);
 
--- Acelera busca por Faixa de Preço (ex: entre 500 e 1000)
+-- Faixa de Preço
 CREATE INDEX idx_moradia_valor ON moradia(valor);
 
--- Acelera busca por Endereço/Cidade (ex: "Centro")
+-- Endereço/Cidade
 CREATE INDEX idx_moradia_endereco ON moradia(endereco);
 
--- ---------------------------------------------------------
--- Quebra o endereço em partes mastigáveis para filtrar
--- ---------------------------------------------------------
+-- Quebra o endereço para filtrar
 
 CREATE OR REPLACE VIEW vw_imoveis_detalhados AS
 SELECT 
-    id_moradia,
-    tipo,
-    valor,
-    max_inquilino,
-    tot_inquilino,
-    descricao,
-    endereco AS endereco_completo,
-    -- Desmontando a String 
-    TRIM(SPLIT_PART(endereco, ',', 4)) AS bairro, -- Pega a 4ª parte
-    TRIM(SPLIT_PART(endereco, ',', 5)) AS cidade, -- Pega a 5ª parte
-    TRIM(SPLIT_PART(endereco, ',', 6)) AS uf     -- Pega a 6ª parte
-FROM moradia;
+    m.id_moradia,
+    m.tipo,
+    m.valor,
+    m.max_inquilino,
+    m.tot_inquilino,
+    m.descricao,
+    m.nome_dono,
+    m.telefone_dono,
+    m.tempo_aluguel,
+    m.endereco AS endereco_completo,
+    TRIM(SPLIT_PART(m.endereco, ',', 4)) AS bairro,
+    TRIM(SPLIT_PART(m.endereco, ',', 5)) AS cidade,
+    TRIM(SPLIT_PART(m.endereco, ',', 6)) AS uf
+	
+FROM moradia m;

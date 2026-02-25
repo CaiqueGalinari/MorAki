@@ -1,171 +1,95 @@
-// 1. NOSSO "BANCO DE DADOS" CONECTADO AO LOCAL STORAGE
-let imoveisCadastrados = JSON.parse(localStorage.getItem('meusImoveis'));
+document.addEventListener("DOMContentLoaded", function() {
+    carregarMeusImoveis();
+});
 
-// Se o Local Storage estiver vazio, criamos os 4 imóveis de teste e salvamos
-if (!imoveisCadastrados || imoveisCadastrados.length === 0) {
-    imoveisCadastrados = [
-        { id: 1, titulo: "República mobiliada próxima ao metrô", preco: '1.200', tempo: 6, inquilinos: 5, endereco: "Rua das Flores, 123, Centro", tipo: "Apartamento", cidade: "São Paulo", estado: "SP", imagem: "../assets/rep1.png" },
-        { id: 2, titulo: "Casa espaçosa perto da faculdade", preco: '850', tempo: 12, inquilinos: 3, endereco: "Av. Universitária, 45, Bairro Alto", tipo: "Casa", cidade: "Campinas", estado: "SP", imagem: "../assets/rep1.png" },
-        { id: 3, titulo: "Quarto individual em apartamento", preco: '1.500', tempo: 6, inquilinos: 2, endereco: "Rua da Paz, 99, Jardins", tipo: "Apartamento", cidade: "São Paulo", estado: "SP", imagem: "../assets/rep1.png" },
-        { id: 4, titulo: "República estudantil Ouro Preto", preco: '600', tempo: 12, inquilinos: 8, endereco: "Rua Direita, 10, Centro Histórico", tipo: "Casa", cidade: "Ouro Preto", estado: "MG", imagem: "../assets/rep1.png" }
-    ];
-    localStorage.setItem('meusImoveis', JSON.stringify(imoveisCadastrados));
-}
-
-// --- VARIÁVEIS DE CONTROLO DA PAGINAÇÃO ---
-let listaAtual = []; 
+let todosImoveis = [];
 let paginaAtual = 1;
+const itensPorPagina = 3;
 
-// AJUSTE 1: Mudamos de 2 para 4 cards por página!
-const itensPorPagina = 4; 
-
-const containerImoveis = document.getElementById('container-imoveis');
-
-// 2. A MÁQUINA DE DESENHAR CARDS
-function renderizarImoveis() {
-    containerImoveis.innerHTML = "";
-
-    const totalPaginas = Math.ceil(listaAtual.length / itensPorPagina) || 1; 
-
-    const indiceInicio = (paginaAtual - 1) * itensPorPagina;
-    const indiceFim = indiceInicio + itensPorPagina;
-    const imoveisDaPagina = listaAtual.slice(indiceInicio, indiceFim);
-
-    document.getElementById('info-paginacao').innerText = `${paginaAtual} de ${totalPaginas}`;
-    document.getElementById('btn-anterior').disabled = (paginaAtual === 1);
-    document.getElementById('btn-proximo').disabled = (paginaAtual === totalPaginas || listaAtual.length === 0);
-
-    if (listaAtual.length === 0) {
-        containerImoveis.innerHTML = "<p style='text-align: center; color: #666; margin-top: 20px;'>Nenhum imóvel encontrado.</p>";
+function carregarMeusImoveis() {
+    const usuarioLogadoString = localStorage.getItem('usuarioLogado');
+    if (!usuarioLogadoString) {
+        window.location.href = "../index.html";
         return;
     }
 
+    const idUsuarioLogado = JSON.parse(usuarioLogadoString).id;
+
+    fetch(`http://localhost:8080/moraki/moradias?idUsuario=${idUsuarioLogado}`)
+        .then(response => response.json())
+        .then(imoveis => {
+            todosImoveis = imoveis;
+            renderizarPagina(); // Chama a função que desenha a página correta
+        })
+        .catch(error => console.error("Erro ao buscar imóveis:", error));
+}
+
+function renderizarPagina() {
+    const container = document.getElementById('container-imoveis');
+    if (!container) return;
+    container.innerHTML = '';
+
+    if(todosImoveis.length === 0) {
+        container.innerHTML = '<p class="aviso-vazio" style="text-align:center; padding: 30px;">Você ainda não tem imóveis cadastrados.</p>';
+        document.getElementById('info-paginacao').innerText = "0 de 0";
+        return;
+    }
+
+    const totalPaginas = Math.ceil(todosImoveis.length / itensPorPagina);
+
+    if (paginaAtual < 1) paginaAtual = 1;
+    if (paginaAtual > totalPaginas) paginaAtual = totalPaginas;
+
+    document.getElementById('info-paginacao').innerText = `${paginaAtual} de ${totalPaginas}`;
+
+    const inicio = (paginaAtual - 1) * itensPorPagina;
+    const fim = inicio + itensPorPagina;
+    const imoveisDaPagina = todosImoveis.slice(inicio, fim);
+
     imoveisDaPagina.forEach(imovel => {
-        
-        const imagemHTML = imovel.imagem 
-            ? `<img src="${imovel.imagem}" alt="Foto" class="card-img">` 
-            : `<div class="sem-foto">Sem fotos</div>`;
+        const partesEndereco = imovel.endereco.split(',');
+        const numero = partesEndereco[1] ? partesEndereco[1].trim() : "S/N";
+        const rua = partesEndereco[2] ? partesEndereco[2].trim() : "Endereço não informado";
+        const bairro = partesEndereco[3] ? partesEndereco[3].trim() : "";
+        const cidade = partesEndereco[4] ? partesEndereco[4].trim() : "";
+
+        const enderecoExibicao = `${rua}, ${numero} - ${bairro}`;
+        const titulo = `${imovel.tipo} em ${bairro || cidade}`;
 
         const cardHTML = `
-        <div class="card-imovel">
-            ${imagemHTML} <div class="card-info">
-                <h3>${imovel.titulo}</h3>
-                <div class="card-detalhes-linha">
-                    <span class="preco">R$ ${imovel.preco}/mês</span>
-                    <span class="info-extra"><i class="ph ph-calendar-blank"></i> ${imovel.tempo} meses</span>
-                    <span class="info-extra"><i class="ph ph-user"></i> Max. ${imovel.inquilinos} inquilinos</span>
+            <div class="card-imovel">
+                <img src="../assets/placeholder.jpg" alt="Foto do Imóvel" class="card-img" style="width: 150px; height: 100px; border-radius: 8px; object-fit: cover;">
+                <div class="card-info">
+                    <h3>${titulo}</h3>
+                    <div class="card-detalhes-linha">
+                        <span class="preco">R$ ${imovel.valor.toFixed(2)}/mês</span>
+                        <span class="info-extra"><i class="ph ph-calendar-blank"></i> ${imovel.tempoAluguel} meses</span>
+                        <span class="info-extra"><i class="ph ph-user"></i> Max. ${imovel.maxInquilino} inquilinos</span>
+                    </div>
+                    <p class="endereco"><i class="ph ph-map-pin"></i> ${enderecoExibicao}</p>
                 </div>
-                <p class="endereco"><i class="ph ph-map-pin"></i> ${imovel.endereco}</p>
+                <div class="card-acoes">
+                    <button class="btn-acao info" title="Ver Informações"><i class="ph-fill ph-info"></i></button>
+                    <button class="btn-acao deletar" title="Excluir"><i class="ph ph-trash"></i></button>
+                    <a href="editar_imovel.html?id=${imovel.idMoradia}" class="btn-acao editar" title="Editar"><i class="ph-fill ph-pencil-simple"></i></a>
+                </div>
             </div>
-
-            <div class="card-acoes">
-                <button class="btn-acao deletar" onclick="deletarImovel(${imovel.id})"><i class="ph ph-trash"></i></button>
-                <button class="btn-acao editar" onclick="editarImovel()"><i class="ph-fill ph-pencil-simple"></i></button>
-            </div>
-        </div>`;
-        
-        containerImoveis.innerHTML += cardHTML;
+        `;
+        container.innerHTML += cardHTML;
     });
 }
 
-// --- EVENTOS DOS BOTÕES DE PAGINAÇÃO ---
-document.getElementById('btn-anterior').addEventListener('click', () => {
+document.getElementById('btn-anterior').addEventListener('click', function() {
     if (paginaAtual > 1) {
         paginaAtual--;
-        renderizarImoveis();
+        renderizarPagina();
     }
 });
 
-document.getElementById('btn-proximo').addEventListener('click', () => {
-    const totalPaginas = Math.ceil(listaAtual.length / itensPorPagina);
+document.getElementById('btn-proximo').addEventListener('click', function() {
+    const totalPaginas = Math.ceil(todosImoveis.length / itensPorPagina);
     if (paginaAtual < totalPaginas) {
         paginaAtual++;
-        renderizarImoveis();
+        renderizarPagina();
     }
 });
-
-
-// 3. RECRIANDO AS AÇÕES DOS BOTÕES
-// AJUSTE 3: A função agora recebe o ID, deleta, salva e recarrega a tela!
-function deletarImovel(idDoImovel) {
-    if (confirm("Tem certeza que deseja excluir este imóvel? A ação não poderá ser desfeita.")) {
-        
-        // 1. Filtra a lista removendo o imóvel que tem o ID clicado
-        imoveisCadastrados = imoveisCadastrados.filter(imovel => imovel.id !== idDoImovel);
-        
-        // 2. Salva a nova lista (sem o imóvel) de volta na mochila (localStorage)
-        localStorage.setItem('meusImoveis', JSON.stringify(imoveisCadastrados));
-        
-        // 3. Atualiza as cidades no filtro (caso fosse a última casa daquela cidade)
-        carregarCidadesNoFiltro();
-        
-        // 4. Reaplica os filtros para atualizar a "listaAtual" e redesenhar a tela
-        aplicarFiltros();
-        
-        alert("Imóvel excluído com sucesso!");
-    }
-}
-
-function editarImovel() { window.location.href = "editar_imovel.html"; }
-
-
-
-// 4. A LÓGICA DO FILTRO COMPLETO
-const filtroTipo = document.getElementById('filtro-tipo');
-const filtroCidade = document.getElementById('filtro-cidade');
-const filtroEstado = document.getElementById('filtro-estado');
-const filtroValor = document.getElementById('filtro-valor');
-const filtroTempo = document.getElementById('filtro-tempo');
-const filtroInquilinos = document.getElementById('filtro-inquilinos');
-
-function aplicarFiltros() {
-    const valTipo = filtroTipo.value;
-    const valCidade = filtroCidade.value;
-    const valEstado = filtroEstado.value;
-    const valValor = filtroValor.value ? parseInt(filtroValor.value) : null;
-    const valTempo = filtroTempo.value ? parseInt(filtroTempo.value) : null;
-    const valInquilinos = filtroInquilinos.value ? parseInt(filtroInquilinos.value) : null;
-
-    listaAtual = imoveisCadastrados.filter(imovel => {
-        const tipoBate = (valTipo === "") || (imovel.tipo === valTipo);
-        const cidadeBate = (valCidade === "") || (imovel.cidade === valCidade);
-        const estadoBate = (valEstado === "") || (imovel.estado === valEstado);
-        
-        
-        const precoNumerico = typeof imovel.preco === 'string' ? parseFloat(imovel.preco.replace('.', '')) : imovel.preco;
-        const valorBate = (valValor === null) || (precoNumerico <= valValor);
-        
-        const tempoBate = (valTempo === null) || (imovel.tempo >= valTempo);
-        const inquilinosBate = (valInquilinos === null) || (imovel.inquilinos <= valInquilinos);
-
-        return tipoBate && cidadeBate && estadoBate && valorBate && tempoBate && inquilinosBate;
-    });
-
-    paginaAtual = 1; 
-    renderizarImoveis();
-}
-
-filtroTipo.addEventListener('change', aplicarFiltros);
-filtroCidade.addEventListener('change', aplicarFiltros);
-filtroEstado.addEventListener('change', aplicarFiltros);
-filtroValor.addEventListener('change', aplicarFiltros);
-filtroTempo.addEventListener('change', aplicarFiltros);
-filtroInquilinos.addEventListener('change', aplicarFiltros);
-
-
-// --- POPULAR CIDADES DINAMICAMENTE ---
-function carregarCidadesNoFiltro() {
-    const filtroCidade = document.getElementById('filtro-cidade');
-    const cidadesUnicas = [...new Set(imoveisCadastrados.map(imovel => imovel.cidade))];
-    filtroCidade.innerHTML = '<option value="">Todas as Cidades</option>';
-    cidadesUnicas.forEach(cidade => {
-        filtroCidade.innerHTML += `<option value="${cidade}">${cidade}</option>`;
-    });
-}
-
-carregarCidadesNoFiltro();
-
-// 5. INICIA O SISTEMA
-// AJUSTE FINAL: Ao abrir, copia o banco para a listaAtual antes de desenhar
-listaAtual = [...imoveisCadastrados];
-renderizarImoveis();
